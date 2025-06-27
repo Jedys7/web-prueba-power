@@ -1,0 +1,203 @@
+/*=============  PARAMETROS GLOBALES ===================*/
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    width: 100%;
+    height: auto;
+    font-family: sans-serif;
+}
+@font-face {
+  font-family: 'Good Times Rg'; 
+  font-style: normal;
+  font-weight: 400;
+  src:local("Good Times Rg"), url("/fuentes/Good-Times-Rg.woff") format("woff");
+}
+ul{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+}
+/*==========  Header  ==================*/  
+header{
+    top: 0;
+    width: 100%;
+    height: 100px;
+    display: flex;
+    position: fixed;
+    z-index: 1000;
+    box-shadow: 0px 2px 0px rgba(0,0,0,0.2);    
+    background-color: #ffffff;
+}
+
+/*==================  Menu Principal  =========================*/
+.nav-menu{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+ul{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+}
+.nav-menu h1{
+    color: #1b537f;
+    font-family: 'Good Times Rg';
+    font-size: 45px;
+}
+.menu{
+    width: 70%;
+    display: flex;
+    justify-content: center;
+
+}
+.menu li{
+    height: 100%;
+    padding: 5px;
+    font-size: 20px;
+    position: relative;
+}
+.menu li a{
+    color: #1b537f;
+    padding: 15px 20px;
+}    
+.menu li:hover a{
+    color: #1b537f;
+}
+.menu li:hover{
+    background-color:#ffffff;
+    border: 2px solid #1b537f;
+}
+
+/*==================  Sub-Menu  =========================*/
+.sub-menu{
+    display: none;
+    position: absolute;
+    top: 100%; /* Posiciona el submenú justo debajo de su padre */
+    left: 0;
+    background-color: #ffffff;
+    border: 2px solid #1b537f;
+    width: 320px; /* Ancho mínimo para los submenús */
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.3);
+    z-index: 1000; /* Asegura que los menús desplegables estén por encima de otros elementos */
+}
+.sub-menu a{
+    font-size: 14px;
+    margin: auto;
+    padding: 0;
+    width: auto;
+}
+.menu li:hover .sub-menu{
+    margin: 3px;
+    padding: 0;
+    display: block;
+    color: #1b537f;
+    box-shadow: 0 2px 0px rgba(0,0,0,0.2);    
+}
+
+/*==================  SUB-SUB--Menu  =========================*/
+
+.sub-sub-menu{
+    display: none;
+    position: absolute;
+    top: 0; /* Posiciona el submenú justo debajo de su padre */
+    left: 100%;
+    background-color: #ffffff;
+    min-width: 315px; /* Ancho mínimo para los submenús */
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2); /* Sombra para mejor visualización */
+    z-index: 1000; /* Asegura que los menús desplegables estén por encima de otros elementos */
+}
+.sub-menu li:hover .sub-sub-menu{
+    display: block;
+    background-color: #ffffff;
+    border: 2px solid #1b537f;
+}
+
+/*==================  Contenido Principal  =========================*/
+main iframe{
+    margin-top: 120px;
+    width: 100%;
+    height: 500px;
+}
+
+
+
+/*=======================  Footer  ==============*/
+footer{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;        
+    background:  grey;
+    box-shadow: 0px 0px 0px 3px rgba(0,0,0,0.2);
+}
+/*========  Footer Izquierda =============*/
+.footer-izquierda{   
+    display: flex;
+    flex-direction: row;
+    margin: 30px;
+    color: #ffffff;
+}
+.footer-izquierda ul{
+    font-size: 16px;
+    margin: 5px;
+}
+.footer-izquierda li{
+    margin: 5px;
+    text-decoration: none;
+}
+.footer-izquierda li a{
+    color: #ffffff;
+    font-size: 14px;
+}
+.footer-izquierda li a:hover{
+    color: #ffffff6b;
+}
+/*========  Footer Derecha =============*/
+.footer-derecha{
+    display: flex;
+    margin-top: 30px;
+    color: #ffffff;
+    flex-direction: column;
+    margin:auto;
+}
+.footer-derecha a{
+    color: #ffffff;
+    font-size: 18px;
+}
+.footer-derecha a:hover{
+    color: #1b537b;
+    border-bottom: 2px solid #1b537f;
+}
+
+/*========= Pie de pagina ==============*/
+.powerge{
+    width: 100%;
+    height: auto;
+    display: flex;
+    background-color: #000000;
+    box-shadow: 0px 0px 0px 2px rgba(255, 255, 255, 0.336);
+    color: #ffffff;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    padding: 30px;
+}
+.powerge h5{
+    padding: 10px;
+    font-family: 'Good Times Rg';
+    font-size: 24px;
+}
+
+
+/*======================= MEDIA QUERY 720p  ============================*/
+
+
+/*======================= MEDIA QUERY Celulares 480p  =================*/

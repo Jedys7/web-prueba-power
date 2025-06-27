@@ -1,0 +1,33 @@
+/*=============  PARAMETROS GLOBALES ===================*/
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    width: 100%;
+    height: auto;
+    font-family: sans-serif;
+}
+@font-face {
+  font-family: 'Good Times Rg'; 
+  font-style: normal;
+  font-weight: 400;
+  src:local("Good Times Rg"), url("/fuentes/Good-Times-Rg.woff") format("woff");
+}
+ul{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+}
+/*==================  Menu  ====================*/
+h2{
+    font-family: "Good Times Rg";
+    color: #1b537f;
+    font-size: 35px;
+}
+section{
+    display: flex;
+    justify-content: center;
+}

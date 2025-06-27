@@ -1,0 +1,87 @@
+/*=============  PARAMETROS GLOBALES ===================*/
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    width: 100%;
+    height: auto;
+    font-family: sans-serif;
+}
+@font-face {
+  font-family: 'Good Times Rg'; 
+  font-style: normal;
+  font-weight: 400;
+  src:local("Good Times Rg"), url("/fuentes/Good-Times-Rg.woff") format("woff");
+}
+ul{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+}
+/*============= Contenido Principal   */
+main{
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    box-sizing: border-box;
+
+}
+h1{
+    color: #1b537f;
+    display: flex;
+    justify-content: center;
+    font-size: 72px;
+    margin: 2rem;
+    font-family: 'Good Times Rg';
+}
+.aplicacionesprincipal{
+    display: flex;
+    flex-direction: row;
+
+}
+.tipoDeAplicacion{
+    width: 450px;
+    margin: 2%;
+    padding: 1%;
+    justify-content: space-evenly;
+    border: rgb(231, 231, 231) solid 2px;
+    box-shadow:0 0 5px rgba(0, 0, 0, 0.3);
+    justify-content: center;
+}
+.tipoDeAplicacion:hover{
+    box-shadow:0 0 5px rgb(4, 0, 255);
+}
+ul{
+    list-style: none;
+}
+.tipoDeAplicacion>h2{
+    color: #1b537f;
+    font-size: 24px;
+    font-family: sans-serif;
+}
+.tipoDeAplicacion>p{
+    font-family: sans-serif;
+}
+img{
+    width: 100%;    
+}
+
+button{
+    font-size: 1.5rem;
+    font-family: sans-serif;
+    color: #ffffff;
+    background-color: #1b537f;
+    padding: 10px 40px;
+    border: 1px solid black;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+}
+button:hover{
+    background-color: #ffffff;
+    color: #1b537f;
+    border: 1px solid #1b537f;
+    box-shadow: 2px 2px #1b537f;
+}
