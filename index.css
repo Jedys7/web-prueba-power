@@ -5,8 +5,11 @@
     box-sizing: border-box;
 }
 body{
+    display: grid;
     width: 100%;
-    height: auto;
+    grid-template-rows:
+    auto;
+    gap: 0px;
     font-family: sans-serif;
 }
 @font-face {
@@ -121,24 +124,27 @@ a{
 }
 
 /*==================  Contenido Principal  =========================*/
-main iframe{
+main{
+    display: flex;
     margin-top: 100px;
-    width: 100%;
-    height: 600px;
-    overflow: none;
-    z-index: 500;
+    flex-grow: 1;
+    height: 100dvh;
 }
-
-
+iframe{
+    width: 100%;
+    height: auto;
+}
 
 /*=======================  Footer  ==============*/
 footer{
     width: 100%;
     height: auto;
+    margin: auto;
     display: flex;
-    flex-direction: row;        
+    flex-direction: row;       
     background:  grey;
-    box-shadow: 0px 0px 0px 3px rgba(0,0,0,0.2);
+    box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.2);
+
 }
 /*========  Footer Izquierda =============*/
 .footer-izquierda{   
