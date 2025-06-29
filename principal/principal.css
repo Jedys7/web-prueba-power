@@ -10,24 +10,117 @@ body{
     font-family: sans-serif;
 }
 @font-face {
-  font-family: 'Good Times Rg'; 
-  font-style: normal;
-  font-weight: 400;
-  src:local("Good Times Rg"), url("/fuentes/Good-Times-Rg.woff") format("woff");
+    font-family: 'Good Times Rg'; 
+    font-style: normal;
+    font-weight: 400;
+    src:local("Good Times Rg"), url("../fuentes/Good-Times-Rg.woff") format("woff");
 }
-ul{
-    list-style: none;
-}
-a{
-    text-decoration: none;
-}
-/*==================  Menu  ====================*/
 h2{
     font-family: "Good Times Rg";
     color: #1b537f;
     font-size: 35px;
 }
-section{
+
+/*==================  Menu  ====================*/
+main{
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    overflow: unset;
+}
+.divisor>h2{
+    font-size: xx-large;
+}
+
+#fotoLarga{
+    width: 100%;
+    height: auto;
+}
+.divisor{
+    display: flex;
+    flex-direction: row;
+    justify-content:space-around;
+    align-items: center;
+}
+
+.divisor>h2{
+    color: #1b537f;
+    font-family: 'Good Times Rg';
+}
+/* PRODUCTOS */
+#seccion1{
     display: flex;
     justify-content: center;
+    flex-direction: row;
+}
+.Carrusel-1{
+    display: flex;
+    justify-content: space-around;
+    border: rgb(231, 231, 231) solid 2px;
+    padding: 1.5rem;
+    margin: 1rem;
+    box-shadow:0 0 5px rgba(0, 0, 0, 0.3);
+    font-family: sans-serif;
+}
+.Carrusel-1:hover{
+    box-shadow:0 0 5px rgb(4, 0, 255);
+}
+/* APLICACIONES */
+#seccion2{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+.Carrusel-2{
+    border: rgb(231, 231, 231) solid 2px;
+    padding: 1.5rem;
+    margin: 1rem;
+    box-shadow:0 0 5px rgba(0, 0, 0, 0.3);
+    font-family: sans-serif;
+}
+.Carrusel-2:hover{
+    box-shadow:0 0 5px rgb(4, 0, 255);
+}
+
+/* SERVICIOS */
+#seccion3{
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+}
+.Carrusel-3{
+    justify-content: center;
+    display: inline-flex;
+    border: rgb(231, 231, 231) solid 2px;
+    padding: 1.5rem;
+    margin: 1rem;
+    box-shadow:0 0 5px rgba(0, 0, 0, 0.3);
+    font-family: sans-serif;
+}
+.Carrusel-3:hover{
+    box-shadow:0 0 5px rgb(4, 0, 255);
+}
+.imgFooter{
+    width: 200px;
+}
+.datosFortalezas{
+    display: flex;
+    justify-content: center;
+    background-color: rgb(255, 255, 255);
+    display: inline-flex;
+    justify-content: space-around;
+    font-family: sans-serif;
+}
+.fortalezas{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    height: auto;
+    margin: 1rem;
+    padding: 1rem;    
+    box-shadow: 0 0 5px 0 rgba(0,0,0,0.2);
+}
+.fortalezas:hover{
+    box-shadow: 0 0 5px 0 rgb(0, 38, 255);
 }
