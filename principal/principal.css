@@ -26,7 +26,6 @@ main{
     display: flex;
     flex-direction: column;
     background-color: white;
-    overflow: unset;
 }
 .divisor>h2{
     font-size: xx-large;
@@ -55,7 +54,10 @@ main{
 }
 .Carrusel-1{
     display: flex;
-    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+    width: 300px;
+    height: 350px;
     border: rgb(231, 231, 231) solid 2px;
     padding: 1.5rem;
     margin: 1rem;
@@ -64,6 +66,12 @@ main{
 }
 .Carrusel-1:hover{
     box-shadow:0 0 5px rgb(4, 0, 255);
+}
+.Carrusel-1 image{
+    width: 100%;
+}
+.Carrusel-1 h5{
+    height: auto;
 }
 /* APLICACIONES */
 #seccion2{
@@ -100,7 +108,11 @@ main{
 .Carrusel-3:hover{
     box-shadow:0 0 5px rgb(4, 0, 255);
 }
+main img{
+    width: 100%;
+}
 /*=====  Fortalezas  ===============*/
+
 .datosFortalezas{
     display: flex;
     justify-content: center;
@@ -125,4 +137,21 @@ main{
 }
 .imgFooter{
     width: 40%;
+    margin-bottom: 20px;
+}
+/*=============================================================*/
+/*================ Media Query Celulares 480p  ================*/
+/*=============================================================*/
+
+@media (width <= 550px) {
+    *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    width: 100%;
+    height: auto;
+    font-family: sans-serif;
+}
 }
