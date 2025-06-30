@@ -204,7 +204,66 @@ footer{
 }
 
 
-/*======================= MEDIA QUERY 720p  ============================*/
+/*=====================================================================*/
+/*======================= MEDIA QUERY Celulares 720p  =================*/
+/*=====================================================================*/
+@media (width <= 1049px) {
+    /*===========  MENU  ================*/
+    .nav-menu{
+        width: 100%;
+    }
+    .nav-menu h1{
+    font-size: 30px;
+    }
+    .nav-menu ul{
+        display: none;
+    }
+}
 
-
+/*=====================================================================*/
 /*======================= MEDIA QUERY Celulares 480p  =================*/
+/*=====================================================================*/
+@media (width <= 550px) {
+    /*===========  MENU  ================*/
+    body{
+        width: 100%;
+        height: 100dvh;
+    }
+    .nav-menu{
+        width: 100%;
+    }
+    .nav-menu h1{
+    font-size: 25px;
+    }
+    .nav-menu ul{
+        display: none;
+    }
+    main{
+        width: 100%;
+        height: auto;
+    }
+    footer{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        padding: 5px;
+    }
+    .footer-izquierda{
+        display: flex;
+        flex-direction: column;
+
+    }
+    .footer-izquierda ul li{
+        display: none;
+    }
+    .footer-izquierda ul:hover li{
+        display: block;
+    }
+    .footer-derecha{ 
+        display: flex;
+        flex-direction: column;
+        justify-items: end;
+    }
+    
+}
+
