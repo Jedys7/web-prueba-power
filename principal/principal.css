@@ -57,7 +57,7 @@ main{
     flex-direction: column;
     align-items: center;
     width: 300px;
-    height: 350px;
+    height: 250px;
     border: rgb(231, 231, 231) solid 2px;
     padding: 1.5rem;
     margin: 1rem;
@@ -67,7 +67,7 @@ main{
 .Carrusel-1:hover{
     box-shadow:0 0 5px rgb(4, 0, 255);
 }
-.Carrusel-1 image{
+.Carrusel-1 img{
     width: 100%;
 }
 .Carrusel-1 h5{
@@ -77,9 +77,15 @@ main{
 #seccion2{
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    width: 70%;
+    justify-content: center;
 }
-.Carrusel-2{
+.Carrusel-2{    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 300px;
+    height: 250px;
     border: rgb(231, 231, 231) solid 2px;
     padding: 1.5rem;
     margin: 1rem;
@@ -89,6 +95,12 @@ main{
 .Carrusel-2:hover{
     box-shadow:0 0 5px rgb(4, 0, 255);
 }
+.Carrusel-2 img{
+    width: 100%;
+}
+.Carrusel-2 h5{
+    height: auto;
+}
 
 /* SERVICIOS */
 #seccion3{
@@ -97,8 +109,11 @@ main{
     flex-direction: row;
 }
 .Carrusel-3{
-    justify-content: center;
-    display: inline-flex;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 300px;
+    height: 250px;
     border: rgb(231, 231, 231) solid 2px;
     padding: 1.5rem;
     margin: 1rem;
@@ -107,6 +122,12 @@ main{
 }
 .Carrusel-3:hover{
     box-shadow:0 0 5px rgb(4, 0, 255);
+}
+.Carrusel-3 img{
+    width: 100%;
+}
+.Carrusel-3 h5{
+    height: auto;
 }
 main img{
     width: 100%;
