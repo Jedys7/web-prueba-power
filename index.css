@@ -62,14 +62,13 @@ a{
 
 }
 .menu li{
-    height: 100%;
-    padding: 5px;
-    font-size: 20px;
+    font-size: 18px;
     position: relative;
+    border: 2px solid #ffffff;
 }
 .menu li a{
     color: #1b537f;
-    padding: 15px 20px;
+    padding: 10px;
 }    
 .menu li:hover a{
     color: #1b537f;
@@ -86,8 +85,8 @@ a{
     top: 100%; /* Posiciona el submenú justo debajo de su padre */
     left: 0;
     background-color: #ffffff;
-    border: 2px solid #1b537f;
-    width: 320px; /* Ancho mínimo para los submenús */
+    border: 1px solid #1b537f;
+    width: max-content; /* Ancho mínimo para los submenús */
     box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.3);
     z-index: 1000; /* Asegura que los menús desplegables estén por encima de otros elementos */
 }
