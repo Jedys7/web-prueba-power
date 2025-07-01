@@ -165,14 +165,100 @@ main img{
 /*=============================================================*/
 
 @media (width <= 550px) {
-    *{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+    /* PRODUCTOS */
+#seccion1{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    overflow-y: auto;
 }
-body{
-    width: 100%;
+.Carrusel-1{
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-content: center;
+    width: 200px;
     height: auto;
+    border: rgb(231, 231, 231) solid 2px;
+    padding: 0;
+    margin: 10px;
+}
+.Carrusel-1 img{
+    width: 150px;
+}
+
+/* APLICACIONES */
+#seccion2{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+}
+.Carrusel-2{    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 300px;
+    height: auto;
+    border: rgb(231, 231, 231) solid 2px;
+    padding: 0;
+    margin: 10px;
+    box-shadow:0 0 5px rgba(0, 0, 0, 0.3);
     font-family: sans-serif;
+}
+.Carrusel-2 img{
+    width: 150px;
+}
+
+/* SERVICIOS */
+#seccion3{
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    overflow-y: auto;
+}
+.Carrusel-3{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 300px;
+    height: auto;
+    border: rgb(231, 231, 231) solid 2px;
+    padding: 0;
+    margin: 1rem;
+    box-shadow:0 0 5px rgba(0, 0, 0, 0.3);
+    font-family: sans-serif;
+}
+.Carrusel-3:hover{
+    box-shadow:0 0 5px rgb(4, 0, 255);
+}
+.Carrusel-3 img{
+    width: 250px;
+}
+/*=====  Fortalezas  ===============*/
+
+.datosFortalezas{
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    background-color: rgb(255, 255, 255);
+    justify-content: space-evenly;
+    font-family: sans-serif;
+}
+.fortalezas{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    background-color: white;
+    height: auto;
+    margin: 10px;
+    padding: 5px;
+}
+
+.imgFooter{
+    width: 100%;
+    margin-bottom: 20px;
 }
 }
