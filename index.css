@@ -246,13 +246,6 @@ body{
 
 
 /*==================  Contenido Principal  ========*/
-    main{
-        grid-row-start: 2;
-        grid-row-end: 3;
-    }
-    iframe{
-        margin: 30px;
-    }
 
     /*=======  Footer  ==============*/
     footer{
