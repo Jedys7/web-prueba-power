@@ -5,12 +5,16 @@
     box-sizing: border-box;
 }
 body{
-    display: grid;
-    width: 100%;
-    grid-template-rows:
-    auto;
-    gap: 0px;
     font-family: sans-serif;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: auto;
+    grid-template-areas: 
+        "header"
+        "main"
+        "footer"
+        "powerge"    
+    ;
 }
 @font-face {
     font-family: 'Good Times Rg'; 
@@ -26,16 +30,17 @@ a{
 }
 /*==========  Header  ==================*/  
 header{
-    top: 0;
+    grid-area: header;
     width: 100%;
     height: 100px;
     display: flex;
     position: fixed;
-    z-index: 1000;
     box-shadow: 0px 2px 0px rgba(0,0,0,0.2);    
     background-color: #ffffff;
 }
-
+#hamburguesa{
+    display: none;
+}
 /*==================  Menu Principal  =========================*/
 .nav-menu{
     width: 100%;
@@ -119,26 +124,26 @@ a{
 .sub-menu li:hover .sub-sub-menu{
     display: block;
     background-color: #ffffff;
-    border: 2px solid #1b537f;
+    border: 1px solid #1b537f;
 }
 
 /*==================  Contenido Principal  =========================*/
 main{
-    display: flex;
+    grid-area: main;
+    border: none;
     margin-top: 100px;
-    flex-grow: 1;
-    height: 100dvh;
 }
 iframe{
     width: 100%;
-    height: auto;
+    min-height: 100vh;
 }
 
 /*=======================  Footer  ==============*/
 footer{
+    grid-area: footer;
+    flex-shrink: 0;
     width: 100%;
     height: auto;
-    margin: auto;
     display: flex;
     flex-direction: row;       
     background:  grey;
@@ -186,7 +191,7 @@ footer{
 
 /*========= Pie de pagina ==============*/
 .powerge{
-    width: 100%;
+    grid-area: powerge;
     height: auto;
     display: flex;
     background-color: #000000;
@@ -202,77 +207,69 @@ footer{
     font-family: 'Good Times Rg';
     font-size: 24px;
 }
-
-
-/*=====================================================================*/
-/*======================= MEDIA QUERY Celulares 720p  =================*/
-/*=====================================================================*/
-@media (width <= 1049px) {
+/*======================= MEDIA QUERY 720p  ============================*/
+@media (width <= 1050px) {
     /*===========  MENU  ================*/
-    .nav-menu{
+body{
         width: 100%;
+        height: auto;
+        display: grid; 
+
     }
-    .nav-menu h1{
-    font-size: 30px;
+    /*========  Cabezera  ============*/
+    .nav-menu{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around
     }
-    .nav-menu ul{
+    #hamburguesa{
+    display: block;
+    width: 25px;
+    }
+    .menu{
         display: none;
     }
+    /*========  Despliegue de Menu  ============*/
+
 }
 
 /*=====================================================================*/
 /*======================= MEDIA QUERY Celulares 480p  =================*/
 /*=====================================================================*/
 @media (width <= 550px) {
-    /*===========  MENU  ================*/
-    body{
-        height: 100dvh;
-        width: 100%;
-    }
+/*===========  body  ================*/
+    
+    
+/*========  Cabezera  ============*/
+
+/*========  Despliegue de Menu  ============*/
+
+
+/*==================  Contenido Principal  ========*/
     main{
-        width: 100%;
-        height: auto;
-        margin-bottom: auto;
+        grid-row-start: 2;
+        grid-row-end: 3;
     }
-    .nav-menu{
-        width: 100%;
-        height: 50px;
+    iframe{
+        margin: 30px;
     }
-    .nav-menu h1{
-    font-size: 25px;
-    }
-    .nav-menu ul{
-        display: none;
-    }
-    main{
-        width: 100%;
-        height: auto;
-    }
+
+    /*=======  Footer  ==============*/
     footer{
-        width: 100%;
-        height: auto;
         display: flex;
         flex-direction: column;
-        padding: 5px;
-        margin-top: auto;
     }
     .footer-izquierda{
         display: flex;
         flex-direction: column;
-    }
-    .footer-izquierda ul li{
-        display: none;
-    }
-    .footer-izquierda ul:hover li{
-        display: block;
-        text-decoration: solid;
-    }
+        align-content: center;
 
+    }
     .footer-derecha{ 
         display: flex;
         flex-direction: column;
-        justify-items: end;
+        margin-bottom: 10px;
+        align-items: center;
     }
-    
-}
 
+}
