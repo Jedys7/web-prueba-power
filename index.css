@@ -8,13 +8,16 @@ body{
     font-family: sans-serif;
     display: grid;
     grid-template-columns: 100%;
-    grid-template-rows: auto;
+    /* Eliminar o ajustar grid-template-rows para que el footer fluya */
+    /* El "auto" en el footer de grid-template-areas hace que se ajuste al contenido */
     grid-template-areas: 
         "header"
         "main"
         "footer"
         "powerge"    
     ;
+    overflow-x: hidden; 
+    min-height: 100vh; /* Asegura que el body siempre ocupe al menos la altura de la ventana */
 }
 @font-face {
     font-family: 'Good Times Rg'; 
@@ -28,6 +31,7 @@ ul{
 a{
     text-decoration: none;
 }
+
 /*==========  Header  ==================*/  
 header{
     grid-area: header;
@@ -37,35 +41,54 @@ header{
     position: fixed;
     box-shadow: 0px 2px 0px rgba(0,0,0,0.2);    
     background-color: #ffffff;
+    z-index: 1001; 
 }
-#hamburguesa{
-    display: none;
-}
-/*==================  Menu Principal  =========================*/
+
+/*==================  Menu Navegación General  =========================*/
 .nav-menu{
     width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-}
-ul{
-    list-style: none;
-}
-a{
-    text-decoration: none;
+    position: relative; 
 }
 .nav-menu h1{
     color: #1b537f;
     font-family: 'Good Times Rg';
     font-size: 45px;
 }
-.menu{
-    width: 70%;
-    display: flex;
-    justify-content: center;
 
+/* Ocultar botón de hamburguesa en Desktop */
+.hamburger-button {
+    display: none; 
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
 }
+.hamburger-button img {
+    width: 25px;
+    height: auto;
+    display: block; 
+}
+
+/*==================  Menú Principal (Desktop)  =========================*/
+.side-menu-container {
+    width: 70%; 
+    display: flex; 
+    justify-content: center;
+}
+
+.menu{
+    width: 100%; 
+    display: flex; 
+    justify-content: center;
+    list-style: none; 
+    padding: 0; 
+    margin: 0; 
+}
+
 .menu li{
     font-size: 18px;
     position: relative;
@@ -74,6 +97,7 @@ a{
 .menu li a{
     color: #1b537f;
     padding: 10px;
+    display: block; 
 }    
 .menu li:hover a{
     color: #1b537f;
@@ -83,59 +107,75 @@ a{
     border: 2px solid #1b537f;
 }
 
-/*==================  Sub-Menu  =========================*/
-.sub-menu{
-    display: none;
+/*==================  Sub-Menu y Sub-Sub-Menu (Desktop)  =========================*/
+.sub-menu, .sub-sub-menu{
+    display: none; 
     position: absolute;
-    top: 100%; /* Posiciona el submenú justo debajo de su padre */
+    background-color: #ffffff;
+    border: 1px solid #1b537f;
+    box-shadow: 0 2px 0px rgba(0,0,0,0.2); 
+    z-index: 1000; 
+    min-width: max-content; 
+    padding: 5px; 
+}
+
+.sub-menu {
+    top: 100%; 
     left: 0;
-    background-color: #ffffff;
-    border: 1px solid #1b537f;
-    width: max-content; /* Ancho mínimo para los submenús */
-    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.3);
-    z-index: 1000; /* Asegura que los menús desplegables estén por encima de otros elementos */
 }
-.sub-menu a{
+
+.sub-sub-menu {
+    top: 0; 
+    left: 100%; 
+}
+
+.sub-menu a, .sub-sub-menu a {
     font-size: 14px;
-    margin: auto;
-    padding: 0;
-    width: auto;
-}
-.menu li:hover .sub-menu{
-    margin: 3px;
-    padding: 0;
-    display: block;
+    padding: 8px 15px; 
     color: #1b537f;
-    box-shadow: 0 2px 0px rgba(0,0,0,0.2);    
-}
-
-/*==================  SUB-SUB--Menu  =========================*/
-
-.sub-sub-menu{
-    display: none;
-    position: absolute;
-    top: 0; /* Posiciona el submenú justo debajo de su padre */
-    left: 100%;
-    background-color: #ffffff;
-    min-width: 315px; /* Ancho mínimo para los submenús */
-    box-shadow: 0 8px 16px rgba(0,0,0,0.2); /* Sombra para mejor visualización */
-    z-index: 1000; /* Asegura que los menús desplegables estén por encima de otros elementos */
-}
-.sub-menu li:hover .sub-sub-menu{
     display: block;
-    background-color: #ffffff;
-    border: 1px solid #1b537f;
+    white-space: nowrap; 
+}
+
+.sub-menu li:hover .sub-sub-menu {
+    display: block; 
+}
+
+.menu li:hover > .sub-menu { 
+    display: block; 
+}
+
+.sub-menu li a:hover, .sub-sub-menu li a:hover {
+    background-color: #f0f0f0; 
+    color: #1b537f;
 }
 
 /*==================  Contenido Principal  =========================*/
 main{
     grid-area: main;
     border: none;
-    margin-top: 100px;
+    padding-top: 100px; /* Offset para el header fijo, el main empieza debajo del header */
+    /* Eliminamos height/min-height del main para que su altura sea determinada por su contenido */
+    /* y el iframe se encargue de empujar el footer */
 }
 iframe{
     width: 100%;
-    min-height: 100vh;
+    /* Elimina el min-height y height aquí. Esto es CRÍTICO. */
+    /* La altura del iframe será dinámica, empujando el footer. */
+    /* Establece un valor mínimo si no quieres que sea 0 en caso de contenido vacío */
+    min-height: calc(100vh - 100px - 10px); /* Ejemplo: Altura de la ventana - header - pequeño margen si lo deseas */
+    /* El 10px es solo un ejemplo de un pequeño espacio si el iframe fuera demasiado alto.
+       Para que el iframe se ajuste al contenido, necesitaríamos JavaScript para redimensionarlo.
+       Si no quieres JavaScript para esto, la alternativa es que el iframe tenga su propio scroll
+       o que su contenido interno se ajuste sin JavaScript.
+       
+       Para que el footer se "empuje", necesitamos que la altura del iframe sea la altura
+       de su contenido. Esto NO se logra solo con CSS. Necesitarás JS para esto.
+       
+       Lo que sí podemos hacer con CSS es que si el iframe es más grande que la ventana,
+       toda la página tenga scroll.
+    */
+    display: block; 
 }
 
 /*=======================  Footer  ==============*/
@@ -143,12 +183,11 @@ footer{
     grid-area: footer;
     flex-shrink: 0;
     width: 100%;
-    height: auto;
+    height: auto; /* Permite que el footer se ajuste a su contenido */
     display: flex;
     flex-direction: row;       
     background:  grey;
     box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.2);
-
 }
 /*========  Footer Izquierda =============*/
 .footer-izquierda{   
@@ -207,47 +246,138 @@ footer{
     font-family: 'Good Times Rg';
     font-size: 24px;
 }
-/*======================= MEDIA QUERY 720p  ============================*/
-@media (width <= 1050px) {
-    /*===========  MENU  ================*/
-body{
-        width: 100%;
-        height: auto;
-        display: grid; 
 
+/*=====================================================================*/
+/*======================= MEDIA QUERIES (Responsive) ==================*/
+/*=====================================================================*/
+
+/* Media Query para pantallas más pequeñas que 1050px (Desktop a Tablet) */
+@media (max-width: 1050px) {
+    .nav-menu {
+        justify-content: space-between; 
+        padding: 0 20px; 
     }
-    /*========  Cabezera  ============*/
-    .nav-menu{
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around
+
+    .nav-menu h1 {
+        font-size: 40px;
     }
-    #hamburguesa{
-    display: block;
-    width: 25px;
-    }
-    .menu{
+
+    /* Ocultar el menú principal en esta resolución */
+    .side-menu-container {
         display: none;
     }
-    /*========  Despliegue de Menu  ============*/
 
+    /* Mostrar el botón de hamburguesa */
+    .hamburger-button {
+        display: block;
+        margin-left: auto; 
+    }
+
+    /* Ajuste del iframe para el header más pequeño */
+    main {
+        padding-top: 100px; /* Mantiene el espacio del header */
+    }
 }
 
-/*=====================================================================*/
-/*======================= MEDIA QUERY Celulares 480p  =================*/
-/*=====================================================================*/
-@media (width <= 550px) {
-/*===========  body  ================*/
+/* Media Query para pantallas más pequeñas que 550px (Tablet a Móvil) */
+@media (max-width: 550px) {
+    header {
+        height: 70px; 
+        align-items: center;
+    }
+    .nav-menu h1 {
+        font-size: 30px; 
+    }
+
+    /* Estilos del contenedor del menú lateral para móvil */
+    .side-menu-container {
+        position: fixed; 
+        top: 0;
+        right: -300px; 
+        width: 280px; 
+        max-width: 80%; 
+        height: 100vh; 
+        background-color: #ffffff; 
+        box-shadow: -5px 0 15px rgba(0,0,0,0.5); 
+        transition: right 0.4s ease-out; 
+        z-index: 1000; 
+        display: flex; 
+        flex-direction: column; 
+        padding-top: 20px; 
+        overflow-y: auto; 
+    }
+
+    /* Clase para mostrar el menú cuando está activo (con JavaScript) */
+    .side-menu-container.active {
+        right: 0; 
+    }
+
+    /* Estilos para el menú UL dentro del contenedor lateral */
+    .menu {
+        flex-direction: column; 
+        width: 100%;
+        align-items: flex-start; 
+        padding-left: 20px; 
+    }
+
+    .menu li {
+        width: 100%; 
+        border: none; 
+        margin-bottom: 5px; 
+    }
+
+    .menu li a {
+        padding: 15px 0; 
+        font-size: 16px;
+        color: #1b537f;
+        border-bottom: 1px solid #eee; 
+    }
+
+    .menu li:last-child a {
+        border-bottom: none;
+    }
     
+    .menu li:hover {
+        background-color: transparent; 
+    }
+
+    .menu li a:hover {
+        background-color: #f0f0f0; 
+    }
+
+    /* Ajuste para sub-menús en móvil (se despliegan hacia abajo) */
+    .sub-menu, .sub-sub-menu {
+        position: static; 
+        display: none; 
+        width: 100%; 
+        box-shadow: none; 
+        border: none; 
+        background-color: #e0e0e0; 
+        padding-left: 10px; 
+    }
+
+    .sub-menu li a, .sub-sub-menu li a {
+        padding: 10px 0 10px 20px; 
+        font-size: 14px;
+        color: #1b537f;
+        border-bottom: 1px dashed #ccc; 
+    }
+
+    .sub-menu li:last-child a, .sub-sub-menu li:last-child a {
+        border-bottom: none;
+    }
+
+    .menu li:hover > .sub-menu,
+    .sub-menu li:hover > .sub-sub-menu {
+        display: block;
+    }
+
+    /* Ajuste del iframe para el header más pequeño en móviles */
+    main {
+        padding-top: 70px; 
+    }
     
-/*========  Cabezera  ============*/
-
-/*========  Despliegue de Menu  ============*/
-
-
-/*==================  Contenido Principal  ========*/
-
-    /*=======  Footer  ==============*/
+    /* Footer */
     footer{
         display: flex;
         flex-direction: column;
@@ -255,8 +385,12 @@ body{
     .footer-izquierda{
         display: flex;
         flex-direction: column;
-        align-content: center;
-
+        align-items: center;
+    }
+    .footer-izquierda ul{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
     }
     .footer-derecha{ 
         display: flex;
@@ -264,5 +398,4 @@ body{
         margin-bottom: 10px;
         align-items: center;
     }
-
 }
