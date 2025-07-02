@@ -1,350 +1,187 @@
-/*=============  PARAMETROS GLOBALES ===================*/
+/*============ Parametros Globales  =============*/
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 body{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
     font-family: sans-serif;
-    display: grid;
-    grid-template-columns: 100%;
-    grid-template-rows: auto; /* Permite que las filas se ajusten a su contenido */
-    grid-template-areas: 
-        "header"
-        "main"
-        "footer"
-        "powerge"    
-    ;
-    overflow-x: hidden; /* Evita el scroll horizontal */
-    min-height: 100vh; /* Asegura que el body ocupe al menos la altura de la ventana */
 }
 @font-face {
     font-family: 'Good Times Rg'; 
     font-style: normal;
     font-weight: 400;
-    src:local("Good Times Rg"), url("./fuentes/Good-Times-Rg.woff") format("woff");
+    src:local("Good Times Rg"), url("./fuente/Good-Times-Rg.woff") format("woff");
 }
-ul{
-    list-style: none;
-}
-a{
-    text-decoration: none;
-}
-
-/*==========  Header  ==================*/  
+/*=============================================*/
+/*==============  MENU  =======================*/
+/*=============================================*/
 header{
-    grid-area: header;
+    top: 0;
+    position: fixed;
     width: 100%;
     height: 100px;
     display: flex;
-    position: fixed;
-    box-shadow: 0px 2px 0px rgba(0,0,0,0.2);    
+    flex-direction: row;
+    justify-content: center;
     background-color: #ffffff;
-    z-index: 999; /* Asegura que el header esté por encima del contenido principal */
+    box-shadow: 0px 0px 1px rgba(1, 1, 1, 0.9);
 }
-.nav-menu{
-    width: 100%;
+nav{ 
     display: flex;
-    justify-content: space-between;
+    align-content: center;
+    justify-content: space-evenly;
     align-items: center;
-    padding: 0 20px;
+    padding:20px;
+    width: 100%;
 }
-.nav-menu h1{
+nav a{
     color: #1b537f;
     font-family: 'Good Times Rg';
     font-size: 40px;
 }
-.nav-menu h1:hover{
-    color: #0026ff;
-}
-/*==================  Menu Principal (Desktop)  =========================*/
-.menu{ /* Este es el menú visible en desktop */
+ul{
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
-    width: 70%;
-    height: 100%;
 }
-.menu li{
-    height: 100%;
-    display: flex;
-    align-items: center;
-    padding: 0 15px;
-    position: relative; /* Necesario para posicionar el sub-menu */
+li{
+    list-style: none;
 }
-.menu li a{
+a{
+    text-decoration: none;
     color: #1b537f;
-    font-size: 20px;
-    font-weight: bold;
 }
-.menu li:hover{
-    background-color: #0026ff60;
+nav ul li a{
+    font-size: 15px;
+    padding: 15px;
 }
-.menu li a:hover{
+nav ul li a:hover{
     color: #ffffff;
+    background-color: #1b537f;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
 }
 
-/*===========  Sub Menu (Desktop)  =====================*/
-.sub-menu, .sub-sub-menu{
-    display: none;
-    position: absolute;
-    top: 100%; /* Debajo del elemento padre */
-    left: 0;
-    width: 250px; /* Ancho del sub-menu */
-    background-color: #ffffff;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 100;
-    padding: 10px 0;
-}
-.sub-menu li, .sub-sub-menu li{
-    height: auto;
-    padding: 0; /* Reiniciar padding para los elementos de submenú */
-}
-.sub-menu li a, .sub-sub-menu li a{
-    padding: 10px 20px; /* Padding para los enlaces del sub-menu */
-    display: block; /* Para que el padding funcione en todo el área del li */
-    white-space: nowrap; /* Evita que el texto se envuelva */
-    font-size: 16px;
-}
-.sub-menu li:hover, .sub-sub-menu li:hover{
-    background-color: #f1f1f1;
-}
-.sub-menu li a:hover, .sub-sub-menu li a:hover{
-    color: #0026ff;
-}
-
-/*=== Sub-Sub Menu (Desktop) ===*/
-.sub-sub-menu{
-    left: 100%; /* Posiciona el sub-sub-menu a la derecha del sub-menu padre */
-    top: 0; /* Alinea con la parte superior del sub-menu padre */
-}
-
-/* Mostrar sub-menus al hacer hover (solo para desktop) */
-.menu li:hover > .sub-menu,
-.sub-menu li:hover > .sub-sub-menu {
-    display: block;
-}
-
-/* =================== Botón Hamburguesa ============*/
-.hamburger-button{ /* Clase del botón que contiene la imagen */
-    display: none; /* Ocultar en desktop por defecto */
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 10px;
-    z-index: 1001; /* Asegura que esté por encima del side-menu-container para el hover */
-}
-.hamburger-button img{
-    width: 40px;
-    height: 40px;
-    display: block;
-}
-.hamburger-button:hover{
-    background-color: #0026ff60;
-}
-
-
-/* SIDE MENU CONTAINER (para el menú desplegable en móvil) */
-.side-menu-container {
+/*============================================================*/
+/*==============  FULLSCREEN MENU   ==========================*/
+/*============================================================*/
+.fullscreen-menu {
     position: fixed;
     top: 0;
-    right: -300px; /* Inicia fuera de la pantalla */
-    width: 280px; /* Ancho del menú desplegable */
-    height: 100%;
-    background-color: #ffffff;
-    border-left: 2px solid #1b537f; /* Borde visible cuando se despliega */
-    transition: right 0.4s ease-out; /* Transición para el deslizamiento */
-    z-index: 1000; /* Asegura que esté por encima de todo */
-    padding-top: 70px; /* Espacio para el header, asumiendo 70px en móvil */
-    overflow-y: auto; /* Permite scroll si el contenido es largo */
-}
-
-.side-menu-container.active {
-    right: 0; /* Se desliza hacia adentro */
-}
-
-/* Estilos para la lista UL dentro del side-menu-container */
-.side-menu-container .menu {
-    display: flex; /* Asegura que los elementos se apilen */
-    flex-direction: column; 
-    align-items: flex-start;
-    width: 100%;
-    height: auto; /* Permite que la altura se ajuste al contenido */
-    padding: 0;
-    /* Eliminar cualquier position: fixed o right que pueda estar aquí */
-    position: static; 
-    right: auto;
-}
-
-.side-menu-container .menu li {
-    width: 100%;
-    padding: 0;
-    border-bottom: 1px dashed #e0e0e0; /* Separador entre elementos principales */
-    position: relative; /* Necesario para posicionar los submenús absolutos */
-}
-
-.side-menu-container .menu li:last-child {
-    border-bottom: none;
-}
-
-.side-menu-container .menu li a {
-    padding: 15px 20px; /* Aumentar el área clickeable */
-    width: 100%;
-    display: block;
-    font-size: 18px;
-    color: #1b537f;
-}
-
-.side-menu-container .menu li a:hover {
-    background-color: #e0e0e0;
-    color: #1b537f;
-}
-
-/* ESTILOS PARA SUBMENÚS DENTRO DEL MENÚ LATERAL (MÓVIL) */
-.side-menu-container .sub-menu,
-.side-menu-container .sub-sub-menu {
-    position: absolute; /* O 'fixed' si quieres que cubra toda la pantalla */
-    top: 0; /* Alinea con la parte superior del menú lateral/submenú padre */
-    left: 100%; /* Inicia a la derecha del menú lateral/submenú padre */
-    width: 100%; /* Ocupa el 100% del ancho del menú lateral */
-    height: 100%; /* Ocupa el 100% de la altura del menú lateral */
-    background-color: #ffffff; /* Mismo fondo que el menú lateral */
-    box-shadow: none; /* Quitar sombra para que se vea como parte del flujo */
-    transition: left 0.4s ease-out; /* Transición para el deslizamiento */
-    z-index: 1010; /* Mayor z-index para que cubra el menú principal */
-    display: flex; /* Usar flexbox para el contenido */
-    flex-direction: column; /* Apilar elementos */
-    padding-top: 70px; /* Mantener padding del header para el contenido */
-    overflow-y: auto; /* Permitir scroll si el submenú es largo */
-}
-
-/* Estado activo del submenú/sub-submenú (se muestra) */
-.side-menu-container .sub-menu.active,
-.side-menu-container .sub-sub-menu.active {
-    left: 0; /* Se desliza hacia la izquierda, cubriendo el menú anterior */
-}
-
-.side-menu-container .sub-menu li,
-.side-menu-container .sub-sub-menu li {
-    border-bottom: 1px dashed #ccc; /* Separador para sub-items */
-}
-
-.side-menu-container .sub-menu li:last-child,
-.side-menu-container .sub-sub-menu li:last-child {
-    border-bottom: none;
-}
-
-.side-menu-container .sub-menu li a,
-.side-menu-container .sub-sub-menu li a {
-    padding: 15px 30px; /* Más padding para los sub-items */
-    font-size: 16px;
-}
-
-/* Botón de retroceso para submenús */
-.back-button {
-    display: none; /* Oculto por defecto, visible solo en submenús activos */
-    position: absolute;
-    top: 0; /* Posicionado al inicio del menú lateral/submenú */
     left: 0;
     width: 100%;
-    background-color: #1b537f; /* Color de fondo del botón de retroceso */
-    color: white;
-    padding: 15px 20px;
-    font-size: 18px;
-    font-weight: bold;
-    border: none;
-    cursor: pointer;
-    text-align: left;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    z-index: 1020; /* Por encima del submenú */
-}
-.back-button.active {
-    display: block; /* Muestra el botón cuando el submenú está activo */
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.98); /* Fondo semitransparente blanco */
+    color: #333;
+    z-index: 1000; /* Asegura que esté encima de todo */
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Alinea el contenido arriba */
+    align-items: center;
+
+    /* Ocultar por defecto */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-100%); /* Inicia arriba, se desliza hacia abajo */
+    transition: opacity 0.5s ease, visibility 0.5s ease, transform 0.5s ease;
 }
 
+.fullscreen-menu.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0); /* Desliza hacia abajo para mostrar */
+}
 
-/*==================  Contenido Principal  ========*/
-main{
+.menu-header {
     width: 100%;
-    min-height: 100vh; /* Asegura que el main sea al menos tan alto como la ventana */
+    max-width: 1200px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+    background-color: #ffffff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
-/*=====================================================================*/
-/*========================  Footer  ====================================*/
-/*=====================================================================*/
-    footer{
-        display: flex;
-        flex-direction: column;
-        background-color: #1b537f;
-        padding: 20px;
-        color: white;
-        text-align: center;
-        grid-area: footer;
-    }
-    .footer-izquierda{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin-bottom: 20px;
-    }
-    .footer-izquierda ul{
-        padding: 5px 0;
-    }
-    .footer-izquierda ul li a{
-        color: white;
-    }
-    .footer-izquierda ul li a:hover{
-        color: #0026ff;
-    }
-    .footer-derecha p{
-        margin: 5px 0;
-    }
-    .footer-derecha p a{
-        color: white;
-        text-decoration: underline;
-    }
-    .footer-derecha p a:hover{
-        color: #0026ff;
-    }
-    .Powerge{
-        text-align: center;
-        background-color: #0d324d;
-        color: white;
-        padding: 10px;
-        grid-area: powerge;
-    }
-/*=====================================================================*/
-/*======================= MEDIA QUERY Celulares 550p  =================*/
-/*=====================================================================*/
-@media (max-width: 550px) { 
-    /* Header */
-    header {
-        height: 70px; /* Altura más pequeña para el header en móvil */
-        justify-content: space-between;
-    }
-    .nav-menu h1 {
-        font-size: 30px;
-    }
-    .menu { /* Ocultar el menú de navegación normal de desktop */
-        display: none; 
-    }
-    .hamburger-button { /* Mostrar botón de hamburguesa en móvil */
-        display: block; 
-    }
 
-    /* Main content padding adjustment */
-    main {
-        padding-top: 70px; /* Ajuste del padding para el header fijo en móvil */
-        height: auto; /* Permitir que el main se ajuste a su contenido */
-    }
-    /* Footer */
-    footer {
-        flex-direction: column;
-        padding: 15px;
-    }
-    .footer-izquierda, .footer-derecha {
-        text-align: center;
-    }
-    .footer-izquierda {
-        margin-bottom: 15px;
-    }
+.menu-header h2 {
+    font-family: 'Good Times Rg';
+    font-size: 35px;
+    color: #1b537f;
+    margin: 0;
+}
+
+.close-btn {
+    font-size: 50px;
+    cursor: pointer;
+    color: #888;
+    font-weight: bold;
+    line-height: 1; /* Para que la 'x' se vea centrada */
+}
+
+.close-btn:hover {
+    color: #111111;
+}
+
+.menu-content {
+    width: 100%;
+    max-width: 1200px; /* Ancho máximo para el contenido del menú */
+    flex-grow: 1; /* Ocupa el espacio restante */
+    padding: 40px 20px; /* Más padding para el contenido */
+    display: grid; /* Usamos Grid para las columnas */
+    grid-template-columns: repeat(5, 1fr); /* 4 columnas de igual ancho */
+    gap: 10px; /* Espacio entre columnas */
+    overflow-y: auto; /* Permite scroll si el contenido es demasiado largo */
+}
+
+.menu-column {
+    height: max-content;
+    background-color: #fcfcfc;
+    border: 2px solid rgb(31, 210, 241);
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.menu-column h3 {
+    font-family: sans-serif;
+    color: #1b537f;
+    font-size: 20px;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 10px;
+}
+
+.menu-column ul {
+    list-style: none;
+    display: block; /* Anula el flexbox de la navegación principal */
+    margin: 1px;
+}
+
+.menu-column ul li {
+    margin-bottom: 0px;
+}
+
+.menu-column ul li a {
+    color: #555;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 5px 0;
+    display: block; /* Para que el área de clic sea más grande */
+    transition: color 0.2s ease;
+}
+
+.menu-column ul li a:hover {
+    color: #007bff;
+    background-color: transparent;
+}
+#aplicaciones-menu .menu-content{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }
